@@ -1,4 +1,6 @@
-#!/bin/bash/python3.4
+#!/usr/bin/python3.4
+# (c) 2014 Rudolf M. Schreier <rudolfschreier@gmx.de>
+"""Convert file from Credit Suisse CSV format to YNAB CSV format."""
 
 from datetime import datetime
 import csv
@@ -8,6 +10,7 @@ CSV_HEADER_LINE_INDEX = 6
 
 
 def reformat_row(row):
+    """Convert transaction row from Credit Suisse to YNAB format."""
     fixed_row = row
     fixed_row.pop("Valutadatum", None)
     fixed_row.pop("Saldo", None)
@@ -40,6 +43,7 @@ def reformat_row(row):
 
 
 def main(file_name):
+    """Convert file from Credit Suisse to YNAB format."""
     csv_file = open(file_name, 'r')
     csv_reader = csv.reader(csv_file)
 
