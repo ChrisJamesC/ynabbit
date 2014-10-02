@@ -63,7 +63,9 @@ def main(file_name):
     out_file.write("Date,Payee,Category,Memo,Outflow,Inflow\n")
 
     for row in csv_dict_reader:
-        csv_dict_writer.writerow(reformat_row(row))
+        new_row = reformat_row(row)
+        if new_row != {}:
+            csv_dict_writer.writerow(new_row)
 
     csv_file.close()
     out_file.close()
